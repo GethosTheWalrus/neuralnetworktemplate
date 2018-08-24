@@ -69,10 +69,11 @@ class neuralNetwork:
 
     def loadconfig(self):
         # set weights from json
-        self.wih = numpy.array(self.params["weights"]["xor"]["wih"])
-        self.who = numpy.array(self.params["weights"]["xor"]["who"])
+        if self.hnodes == self.params["hidden_nodes"] and self.inodes == self.params["input_nodes"] and self.onodes == self.params["output_nodes"]:
+            self.wih = numpy.array(self.params["weights"]["xor"]["wih"])
+            self.who = numpy.array(self.params["weights"]["xor"]["who"])
 
-    def saveconfig(self):
+    def saveconfig(self, category):
         # save params to the file
         params = {
             "input_nodes": self.inodes,
@@ -80,7 +81,7 @@ class neuralNetwork:
             "hidden_nodes": self.hnodes,
             "learning_rate": self.lr,
             "weights": {
-                "xor": {
+                category: {
                     "wih": self.wih,
                     "who": self.who
                 }

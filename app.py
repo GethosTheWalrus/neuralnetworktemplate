@@ -6,6 +6,7 @@ import codecs, json
 n = neuralNetwork()
 
 # load the previously generated weights
+
 n.loadconfig()
 
 xor_possibilities = [
@@ -26,7 +27,7 @@ for i in range(0, 100000):
     n.train(inputs, targets)
 
 # save the updated weights
-n.saveconfig()
+n.saveconfig("xor")
 
 # predict the output of the 4 xor possiblities
 xor_00 = n.query( [ numpy.asfarray( xor_possibilities[0][1:] ) ] )
